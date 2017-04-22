@@ -1,0 +1,3634 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="http://dandean.github.com/express-form"
+
+    >express-form (v0.12.6)</a>
+</h1>
+<h4>Form validation and data filtering for Express</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.express-form">module express-form</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.express-form">
+            function <span class="apidocSignatureSpan"></span>express-form
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.configure">
+            function <span class="apidocSignatureSpan">express-form.</span>configure
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field">
+            function <span class="apidocSignatureSpan">express-form.</span>field
+            <span class="apidocSignatureSpan">(property, label)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.filter">
+            function <span class="apidocSignatureSpan">express-form.</span>filter
+            <span class="apidocSignatureSpan">(property, label)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.form">
+            function <span class="apidocSignatureSpan">express-form.</span>form
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.validate">
+            function <span class="apidocSignatureSpan">express-form.</span>validate
+            <span class="apidocSignatureSpan">(property, label)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">express-form.</span>_options</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">express-form.</span>field.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">express-form.</span>utils</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.express-form.field">module express-form.field</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.field">
+            function <span class="apidocSignatureSpan">express-form.</span>field
+            <span class="apidocSignatureSpan">(property, label)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.express-form.field.prototype">module express-form.field.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.arrLength">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>arrLength
+            <span class="apidocSignatureSpan">(from, to)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.array">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>array
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.chain">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>chain
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.contains">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>contains
+            <span class="apidocSignatureSpan">(test, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.convert">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>convert
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.custom">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>custom
+            <span class="apidocSignatureSpan">(func, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.customFilter">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>customFilter
+            <span class="apidocSignatureSpan">(func)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.customValidator">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>customValidator
+            <span class="apidocSignatureSpan">(func, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.entityDecode">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>entityDecode
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.entityEncode">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>entityEncode
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.equals">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>equals
+            <span class="apidocSignatureSpan">(other, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.escape">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>escape
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.ifNull">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>ifNull
+            <span class="apidocSignatureSpan">(replacement)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.is">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>is
+            <span class="apidocSignatureSpan">(pattern, modifiers, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isAfter">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isAfter
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isAlpha">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isAlpha
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isAlphanumeric">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isAlphanumeric
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isBefore">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isBefore
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isCreditCard">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isCreditCard
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isDate">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isDate
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isDecimal">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isDecimal
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isDivisibleBy">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isDivisibleBy
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isEmail">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isEmail
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isFloat">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isFloat
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isHexColor">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isHexColor
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isHexadecimal">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isHexadecimal
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isIP">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isIP
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isIPv4">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isIPv4
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isIPv6">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isIPv6
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isIn">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isIn
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isInt">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isInt
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isLowercase">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isLowercase
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isNumeric">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isNumeric
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isString">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isString
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isUUID">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isUUID
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isUUIDv3">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isUUIDv3
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isUUIDv4">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isUUIDv4
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isUUIDv5">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isUUIDv5
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isUppercase">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isUppercase
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.isUrl">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isUrl
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.ltrim">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>ltrim
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.max">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>max
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.maxLength">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>maxLength
+            <span class="apidocSignatureSpan">(length, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.min">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>min
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.minLength">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>minLength
+            <span class="apidocSignatureSpan">(length, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.modify">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>modify
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.not">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>not
+            <span class="apidocSignatureSpan">(pattern, modifiers, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.notContains">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>notContains
+            <span class="apidocSignatureSpan">(test, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.notEmpty">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>notEmpty
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.notIn">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>notIn
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.notRegex">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>notRegex
+            <span class="apidocSignatureSpan">(pattern, modifiers, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.regex">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>regex
+            <span class="apidocSignatureSpan">(pattern, modifiers, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.required">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>required
+            <span class="apidocSignatureSpan">(placeholderValue, message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.rtrim">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>rtrim
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.sanitize">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>sanitize
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.toBoolean">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>toBoolean
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.toBooleanStrict">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>toBooleanStrict
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.toFloat">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>toFloat
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.toInt">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>toInt
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.toLower">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>toLower
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.toLowerCase">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>toLowerCase
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.toUpper">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>toUpper
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.toUpperCase">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>toUpperCase
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.trim">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>trim
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.truncate">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>truncate
+            <span class="apidocSignatureSpan">(length)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.value">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>value
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.field.prototype.wrap">
+            function <span class="apidocSignatureSpan">express-form.field.prototype.</span>wrap
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.express-form.form">module express-form.form</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.form.form">
+            function <span class="apidocSignatureSpan">express-form.</span>form
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.form.configure">
+            function <span class="apidocSignatureSpan">express-form.form.</span>configure
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.form.field">
+            function <span class="apidocSignatureSpan">express-form.form.</span>field
+            <span class="apidocSignatureSpan">(property, label)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.form.filter">
+            function <span class="apidocSignatureSpan">express-form.form.</span>filter
+            <span class="apidocSignatureSpan">(property, label)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.form.validate">
+            function <span class="apidocSignatureSpan">express-form.form.</span>validate
+            <span class="apidocSignatureSpan">(property, label)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">express-form.form.</span>_options</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.express-form.utils">module express-form.utils</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.utils.camelize">
+            function <span class="apidocSignatureSpan">express-form.utils.</span>camelize
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.utils.clone">
+            function <span class="apidocSignatureSpan">express-form.utils.</span>clone
+            <span class="apidocSignatureSpan">(obj)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.utils.getProp">
+            function <span class="apidocSignatureSpan">express-form.utils.</span>getProp
+            <span class="apidocSignatureSpan">(property, obj)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.utils.hasValue">
+            function <span class="apidocSignatureSpan">express-form.utils.</span>hasValue
+            <span class="apidocSignatureSpan">(value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.utils.merge">
+            function <span class="apidocSignatureSpan">express-form.utils.</span>merge
+            <span class="apidocSignatureSpan">(obj1, obj2)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.utils.setProp">
+            function <span class="apidocSignatureSpan">express-form.utils.</span>setProp
+            <span class="apidocSignatureSpan">(property, obj, value)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.express-form.utils.toDotNotation">
+            function <span class="apidocSignatureSpan">express-form.utils.</span>toDotNotation
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.express-form" id="apidoc.module.express-form">module express-form</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.express-form" id="apidoc.element.express-form.express-form">
+        function <span class="apidocSignatureSpan"></span>express-form
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function form() {
+  var routines = Array.prototype.slice.call(arguments)
+    , options = form._options;
+
+  return function (req, res, next) {
+    var map = {}
+      , flashed = {}
+      , mergedSource = {};
+
+    if (!req.form) req.form = {};
+
+    options.dataSources.forEach(function (source) {
+      utils.merge(mergedSource, req[source]);
+    });
+
+    if (options.passThrough) req.form = utils.clone(mergedSource);
+
+    if (options.autoLocals) {
+      for (var prop in req.body) {
+        if (!Object.hasOwnProperty.call(req.body, prop)) continue;
+
+<span class="apidocCodeCommentSpan">        /*
+         * express 1.x and 3.x
+         * ------------------------
+         * res.locals.field = value
+         *
+         * express 2.x
+         * ------------------------
+         * res.local(field, value)
+         * res.locals({field: value});
+         */
+</span>        if (typeof res.local === &#x22;function&#x22;) {
+          // express 2.x
+          res.local(utils.camelize(prop), req.body[prop]);
+        } else {
+          // express 1.x and 3.x
+          if (!res.locals) res.locals = {};
+          res.locals[utils.camelize(prop)] = req.body[prop];
+        }
+      }
+    }
+
+    Object.defineProperties(req.form, {
+      &#x22;errors&#x22;: {
+        value: [],
+        enumerable: false
+      },
+      &#x22;getErrors&#x22;: {
+        value: function (name) {
+          if(!name) return map;
+
+          return map[name] || [];
+        },
+        enumerable: false
+      },
+      &#x22;isValid&#x22;: {
+        get: function () {
+          return this.errors.length === 0;
+        },
+        enumerable: false
+      },
+      &#x22;flashErrors&#x22;: {
+        value: function () {
+          if (typeof req.flash !== &#x22;function&#x22;) return;
+          this.errors.forEach(function (error) {
+            if (flashed[error]) return;
+
+            flashed[error] = true;
+            req.flash(&#x22;error&#x22;, error);
+          });
+        },
+        enumerable: false
+      }
+    });
+
+    //routines.forEach(function (routine) {
+    async.each(routines, function(routine, cb) {
+      routine.run(mergedSource, req.form, options, function(err, result) {
+
+        // return early if no errors
+        if (!Array.isArray(result) || !result.length) return cb(null);
+
+        var errors = req.form.errors = req.form.errors || []
+          , name = routine.name;
+
+        map[name] = map[name] || [];
+
+        result.forEach(function (error) {
+          errors.push(error);
+          map[name].push(error);
+        });
+
+        cb(null);
+
+      });
+    }, function(err) {
+
+      if (options.flashErrors) req.form.flashErrors();
+      if (next) next();
+
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.configure" id="apidoc.element.express-form.configure">
+        function <span class="apidocSignatureSpan">express-form.</span>configure
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">configure = function (options) {
+  for (var p in options) {
+    if (!Array.isArray(options[p]) &#x26;&#x26; p === &#x22;dataSources&#x22;) {
+      options[p] = [options[p]];
+    }
+    this._options[p] = options[p];
+  }
+  return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  }
+}
+
+### Configuration
+
+Express Form has various configuration options, but aims for sensible defaults for a typical Express application.
+
+form.<span class="apidocCodeKeywordSpan">configure</span>(options) -&#x3e; self
+- options (Object): An object with configuration options.
+
+flashErrors (Boolean): If validation errors should be automatically passed to Express’ flash() method. Default: true.
+
+autoLocals (Boolean): If field values from Express’ request.body should be passed into Express’ response.locals object. This is
+helpful when a form is invalid an you want to repopulate the form elements with their submitted values. Default: true.
+
+Note: if a field name dash-separated, the name used for the locals object will be in camelCase.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field" id="apidoc.element.express-form.field">
+        function <span class="apidocSignatureSpan">express-form.</span>field
+        <span class="apidocSignatureSpan">(property, label)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">field = function (property, label) {
+  return new Field(property, label);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```js
+var form = require(&#x22;express-form&#x22;);
+
+app.post(&#x27;/user&#x27;,
+
+  // Express Form Route Middleware: trims whitespace off of
+  // the `username` field.
+  form(form.<span class="apidocCodeKeywordSpan">field</span>(&#x22;username&#x22;).trim()),
+
+  // standard Express handler
+  function(req, res) {
+    // ...
+  }
+);
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.filter" id="apidoc.element.express-form.filter">
+        function <span class="apidocSignatureSpan">express-form.</span>filter
+        <span class="apidocSignatureSpan">(property, label)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">filter = function (property, label) {
+  return new Field(property, label);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.form" id="apidoc.element.express-form.form">
+        function <span class="apidocSignatureSpan">express-form.</span>form
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function form() {
+  var routines = Array.prototype.slice.call(arguments)
+    , options = form._options;
+
+  return function (req, res, next) {
+    var map = {}
+      , flashed = {}
+      , mergedSource = {};
+
+    if (!req.form) req.form = {};
+
+    options.dataSources.forEach(function (source) {
+      utils.merge(mergedSource, req[source]);
+    });
+
+    if (options.passThrough) req.form = utils.clone(mergedSource);
+
+    if (options.autoLocals) {
+      for (var prop in req.body) {
+        if (!Object.hasOwnProperty.call(req.body, prop)) continue;
+
+<span class="apidocCodeCommentSpan">        /*
+         * express 1.x and 3.x
+         * ------------------------
+         * res.locals.field = value
+         *
+         * express 2.x
+         * ------------------------
+         * res.local(field, value)
+         * res.locals({field: value});
+         */
+</span>        if (typeof res.local === &#x22;function&#x22;) {
+          // express 2.x
+          res.local(utils.camelize(prop), req.body[prop]);
+        } else {
+          // express 1.x and 3.x
+          if (!res.locals) res.locals = {};
+          res.locals[utils.camelize(prop)] = req.body[prop];
+        }
+      }
+    }
+
+    Object.defineProperties(req.form, {
+      &#x22;errors&#x22;: {
+        value: [],
+        enumerable: false
+      },
+      &#x22;getErrors&#x22;: {
+        value: function (name) {
+          if(!name) return map;
+
+          return map[name] || [];
+        },
+        enumerable: false
+      },
+      &#x22;isValid&#x22;: {
+        get: function () {
+          return this.errors.length === 0;
+        },
+        enumerable: false
+      },
+      &#x22;flashErrors&#x22;: {
+        value: function () {
+          if (typeof req.flash !== &#x22;function&#x22;) return;
+          this.errors.forEach(function (error) {
+            if (flashed[error]) return;
+
+            flashed[error] = true;
+            req.flash(&#x22;error&#x22;, error);
+          });
+        },
+        enumerable: false
+      }
+    });
+
+    //routines.forEach(function (routine) {
+    async.each(routines, function(routine, cb) {
+      routine.run(mergedSource, req.form, options, function(err, result) {
+
+        // return early if no errors
+        if (!Array.isArray(result) || !result.length) return cb(null);
+
+        var errors = req.form.errors = req.form.errors || []
+          , name = routine.name;
+
+        map[name] = map[name] || [];
+
+        result.forEach(function (error) {
+          errors.push(error);
+          map[name].push(error);
+        });
+
+        cb(null);
+
+      });
+    }, function(err) {
+
+      if (options.flashErrors) req.form.flashErrors();
+      if (next) next();
+
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.validate" id="apidoc.element.express-form.validate">
+        function <span class="apidocSignatureSpan">express-form.</span>validate
+        <span class="apidocSignatureSpan">(property, label)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">validate = function (property, label) {
+  return new Field(property, label);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.express-form.field" id="apidoc.module.express-form.field">module express-form.field</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.field" id="apidoc.element.express-form.field.field">
+        function <span class="apidocSignatureSpan">express-form.</span>field
+        <span class="apidocSignatureSpan">(property, label)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Field(property, label) {
+  var stack = []
+    , isArray = false
+    , fieldLabel = label || property;
+
+  this.name = property;
+  this.__required = false;
+  this.__trimmed = false;
+
+  this.add = function(func) {
+    stack.push(func);
+    return this;
+  };
+
+  this.array = function() {
+    isArray = true;
+    return this;
+  };
+
+  this.run = function (source, form, options, cb) {
+    var self = this
+      , errors = []
+      , value = utils.getProp(property, form) || utils.getProp(property, source);
+
+    if (options.autoTrim &#x26;&#x26; !self.__trimmed) {
+      self.__trimmed = true;
+      stack.unshift(function (value) {
+        if (object.isString(value)) {
+          return FilterPrototype.trim.apply(externalFilter.sanitize(value));
+        }
+        return value;
+      });
+    }
+
+    function runStack(foo, cb) {
+
+      async.eachSeries(stack, function(proc, cb) {
+
+        if (proc.length == 3) {
+          // run the async validator/filter
+          return proc(foo, source, function(err, result) {
+            if (err) {
+              errors.push(err.message.replace(&#x22;%s&#x22;, fieldLabel));
+              return cb(null);
+            }
+
+            // filters return values
+            if (result != null) {
+              foo = result
+            }
+
+            cb(null);
+
+          });
+        }
+
+        // run the sync validator/filter
+        var result = proc(foo, source);
+        if (result.valid) return cb(null);
+        if (result.error) {
+          // If this field is not required and it doesn&#x27;t have a value, ignore error.
+          if (!utils.hasValue(value) &#x26;&#x26; !self.__required) return cb(null);
+
+          errors.push(result.error.replace(&#x22;%s&#x22;, fieldLabel));
+          return cb(null);
+        }
+        foo = result;
+        cb(null);
+
+      }, function(err) {
+        cb(null, foo);
+      });
+    }
+
+    if (isArray) {
+      if (!utils.hasValue(value)) value = [];
+      if (!Array.isArray(value)) value = [value];
+      async.mapSeries(value, runStack, function(err, value) {
+        utils.setProp(property, form, value);
+        cb(null, errors);
+      });
+
+
+    } else {
+      if (Array.isArray(value)) value = value[0];
+      runStack(value, function(err, value) {
+        utils.setProp(property, form, value);
+        cb(null, errors);
+      });
+    }
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```js
+var form = require(&#x22;express-form&#x22;);
+
+app.post(&#x27;/user&#x27;,
+
+  // Express Form Route Middleware: trims whitespace off of
+  // the `username` field.
+  form(form.<span class="apidocCodeKeywordSpan">field</span>(&#x22;username&#x22;).trim()),
+
+  // standard Express handler
+  function(req, res) {
+    // ...
+  }
+);
+```
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.express-form.field.prototype" id="apidoc.module.express-form.field.prototype">module express-form.field.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.arrLength" id="apidoc.element.express-form.field.prototype.arrLength">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>arrLength
+        <span class="apidocSignatureSpan">(from, to)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">arrLength = function (from, to) {
+  return this.add(function (arr) {
+    if (value.length &#x3c; from) {
+      return { error: message || e.message || &#x22;%s is too short&#x22; };
+    }
+    if (value.length &#x3e; to) {
+      return { error: message || e.message || &#x22;%s is too long&#x22; };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.array" id="apidoc.element.express-form.field.prototype.array">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>array
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">array = function () {
+  return this.array();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+### Array Method
+
+    array()
+Using the array() flag means that field always gives an array. If the field value is an array, but there is no flag, then the first
+ value in that array is used instead.
+
+This means that you don&#x27;t have to worry about unexpected post data that might break your code. Eg/ when you call an array method
+ on what is actually a string.
+
+field(&#x22;project.users&#x22;).<span class="apidocCodeKeywordSpan">array</span>(),
+// undefined =&#x3e; [], &#x22;&#x22; =&#x3e; [], &#x22;q&#x22; =&#x3e; [&#x22;q&#x22;], [&#x22;a&#x22;, &#x22;b&#x22;] =&#x3e; [&#
+x22;a&#x22;, &#x22;b&#x22;]
+
+field(&#x22;project.block&#x22;),
+// project.block: [&#x22;a&#x22;, &#x22;b&#x22;] =&#x3e; &#x22;a&#x22;. No &#x22;array()&#x22;, so only first value used.
+
+In addition, any other methods called with the array method, are applied to every value within the array.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.chain" id="apidoc.element.express-form.field.prototype.chain">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>chain
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">chain = function () {
+  var args = arguments;
+  return this.add(function (value) {
+    var a = FilterPrototype[name].apply(externalFilter.sanitize(value), args);
+    return a;
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.contains" id="apidoc.element.express-form.field.prototype.contains">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>contains
+        <span class="apidocSignatureSpan">(test, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">contains = function (test, message) {
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype.contains.call(externalValidator.check(value, message), test);
+    } catch (e) {
+      return { error: message || &#x22;%s does not contain required characters&#x22; };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.convert" id="apidoc.element.express-form.field.prototype.convert">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>convert
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">convert = function () {
+  var args = arguments;
+  return this.add(function (value) {
+    var a = FilterPrototype[name].apply(externalFilter.sanitize(value), args);
+    return a;
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.custom" id="apidoc.element.express-form.field.prototype.custom">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>custom
+        <span class="apidocSignatureSpan">(func, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">custom = function (func, message) {
+
+  // custom function is async
+  if (func.length == 3) {
+    return this.add(function(value, source, cb) {
+      func(value, source, function(err, result) {
+        if (err) return cb(new Error(message || err.message || &#x22;%s is invalid&#x22;));
+
+        // functions that return values are filters
+        if (result != null) return cb(null, result);
+
+        // value passed validator
+        cb(null, null);
+      });
+    });
+  }
+
+  // custom function is sync
+  return this.add(function (value, source) {
+
+    try {
+      var result = func(value, source);
+    } catch (e) {
+      return { error: message || e.message || &#x22;%s is invalid&#x22; };
+    }
+    // Functions that return values are filters.
+    if (result != null) return result;
+
+    // value passed validator
+    return { valid: true };
+
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+If the function returns undefined, then the method has no effect on the field.
+
+Examples:
+
+If the `name` field has a value of &#x22;hello there&#x22;, this would
+transform it to &#x22;hello-there&#x22;.
+
+field(&#x22;name&#x22;).<span class="apidocCodeKeywordSpan">custom</span>(function(value) {
+  return value.replace(/\s+/g, &#x22;-&#x22;);
+});
+
+Throws an error if `username` field does not have value &#x22;admin&#x22;.
+
+field(&#x22;username&#x22;).custom(function(value) {
+    if (value !== &#x22;admin&#x22;) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.customFilter" id="apidoc.element.express-form.field.prototype.customFilter">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>customFilter
+        <span class="apidocSignatureSpan">(func)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">customFilter = function (func) {
+  return this.add(func);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.customValidator" id="apidoc.element.express-form.field.prototype.customValidator">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>customValidator
+        <span class="apidocSignatureSpan">(func, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">customValidator = function (func, message) {
+  return this.add(function(value, source) {
+    try {
+      func(value, source);
+    } catch (e) {
+      return { error: message || e.message || &#x22;%s is invalid&#x22; };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.entityDecode" id="apidoc.element.express-form.field.prototype.entityDecode">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>entityDecode
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">entityDecode = function () {
+  var args = arguments;
+  return this.add(function (value) {
+    var a = FilterPrototype[name].apply(externalFilter.sanitize(value), args);
+    return a;
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.entityEncode" id="apidoc.element.express-form.field.prototype.entityEncode">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>entityEncode
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">entityEncode = function () {
+  var args = arguments;
+  return this.add(function (value) {
+    var a = FilterPrototype[name].apply(externalFilter.sanitize(value), args);
+    return a;
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.equals" id="apidoc.element.express-form.field.prototype.equals">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>equals
+        <span class="apidocSignatureSpan">(other, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">equals = function (other, message) {
+  if (object.isString(other) &#x26;&#x26; other.match(/^field::/)) {
+    this.__required = true;
+  }
+
+  return this.add(function (value, source) {
+    // If other is a field token (field::fieldname), grab the value of fieldname
+    // and use that as the OTHER value.
+    var test = other;
+    if (object.isString(other) &#x26;&#x26; other.match(/^field::/)) {
+      test = utils.getProp(other.replace(/^field::/, &#x22;&#x22;), source);
+    }
+    if (value != test) {
+      return { error: message || &#x22;%s does not equal &#x22; + String(test) };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+equals( value [, message] )
+- value (String): A value that should match the field value OR a fieldname
+                  token to match another field, ie, `field::password`.
+
+    Compares the field to `value`.
+
+    Example:
+    validate(&#x22;username&#x22;).<span class="apidocCodeKeywordSpan">equals</span>(&#x22;admin&#x22;)
+
+    validate(&#x22;password&#x22;).is(/^\w{6,20}$/)
+    validate(&#x22;password_confirmation&#x22;).equals(&#x22;field::password&#x22;)
+
+
+contains(value[, message])
+- value (String): The value to test for.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.escape" id="apidoc.element.express-form.field.prototype.escape">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>escape
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">escape = function () {
+  var args = arguments;
+  return this.add(function (value) {
+    var a = FilterPrototype[name].apply(externalFilter.sanitize(value), args);
+    return a;
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.ifNull" id="apidoc.element.express-form.field.prototype.ifNull">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>ifNull
+        <span class="apidocSignatureSpan">(replacement)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ifNull = function (replacement) {
+  return this.add(function (value) {
+    if (object.isUndefined(value) || null === value || &#x27;&#x27; === value) {
+      return replacement;
+    }
+    return value;
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.is" id="apidoc.element.express-form.field.prototype.is">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>is
+        <span class="apidocSignatureSpan">(pattern, modifiers, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">is = function (pattern, modifiers, message) {
+  // regex(/pattern/)
+  // regex(/pattern/, &#x22;message&#x22;)
+  // regex(&#x22;pattern&#x22;)
+  // regex(&#x22;pattern&#x22;, &#x22;modifiers&#x22;)
+  // regex(&#x22;pattern&#x22;, &#x22;message&#x22;)
+  // regex(&#x22;pattern&#x22;, &#x22;modifiers&#x22;, &#x22;message&#x22;)
+
+  if (pattern instanceof RegExp) {
+    if (object.isString(modifiers) &#x26;&#x26; modifiers.match(/^[gimy]+$/)) {
+      throw new Error(&#x22;Invalid arguments: `modifiers` can only be passed in if `pattern` is a string.&#x22;);
+    }
+
+    message = modifiers;
+    modifiers = undefined;
+
+  } else if (object.isString(pattern)) {
+    if (arguments.length == 2 &#x26;&#x26; !modifiers.match(/^[gimy]+$/)) {
+      // 2nd arg doesn&#x27;t look like modifier flags, it&#x27;s the message (might also be undefined)
+      message = modifiers;
+      modifiers = undefined;
+    }
+    pattern = new RegExp(pattern, modifiers);
+  }
+
+  return this.add(function (value) {
+    if (pattern.test(value) === false) {
+      return { error: message || &#x22;%s has invalid characters&#x22; };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+app.post(
+
+  // Route
+  &#x27;/user&#x27;,
+
+  // Form filter and validation middleware
+  form(
+ field(&#x22;username&#x22;).trim().required().<span class="apidocCodeKeywordSpan">is</span>(/^[a-z]+$/),
+ field(&#x22;password&#x22;).trim().required().is(/^[0-9]+$/),
+ field(&#x22;email&#x22;).trim().isEmail()
+),
+
+// Express request-handler now receives filtered and validated data
+function(req, res){
+  if (!req.form.isValid) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isAfter" id="apidoc.element.express-form.field.prototype.isAfter">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isAfter
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isAfter = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isAlpha" id="apidoc.element.express-form.field.prototype.isAlpha">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isAlpha
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isAlpha = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isAlphanumeric" id="apidoc.element.express-form.field.prototype.isAlphanumeric">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isAlphanumeric
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isAlphanumeric = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```js
+filter(&#x22;username&#x22;)
+  .required()
+  .trim()
+  .toLower()
+  .truncate(5)
+  .<span class="apidocCodeKeywordSpan">isAlphanumeric</span>()
+```
+
+### Filter API:
+
+Type Coercion
+
+toFloat()           -&#x3e; Number
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isBefore" id="apidoc.element.express-form.field.prototype.isBefore">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isBefore
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isBefore = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isCreditCard" id="apidoc.element.express-form.field.prototype.isCreditCard">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isCreditCard
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isCreditCard = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isDate" id="apidoc.element.express-form.field.prototype.isDate">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isDate
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isDate = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isDecimal" id="apidoc.element.express-form.field.prototype.isDecimal">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isDecimal
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isDecimal = function (message) {
+  return this.add(function (value) {
+    if ((object.isNumber(value) &#x26;&#x26; value % 1 == 0) || (object.isString(value) &#x26;&#x26; value.match(/^[-+]?[0-9]*\.[0-9]+$/))) {
+    } else {
+      return { error: message || &#x22;%s is not a decimal&#x22; };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isDivisibleBy" id="apidoc.element.express-form.field.prototype.isDivisibleBy">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isDivisibleBy
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isDivisibleBy = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isEmail" id="apidoc.element.express-form.field.prototype.isEmail">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isEmail
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isEmail = function (message) {
+  return this.add(function (value) {
+    if (typeof value != &#x27;string&#x27; || !(/^[\-0-9a-zA-Z\.\+_]+@[\-0-9a-zA-Z\.\+_]+\.[a-zA-Z]{2,}$/).test(value)) {
+      return { error: message || &#x22;%s is not an email address&#x22; };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  // Route
+  &#x27;/user&#x27;,
+
+  // Form filter and validation middleware
+  form(
+ field(&#x22;username&#x22;).trim().required().is(/^[a-z]+$/),
+ field(&#x22;password&#x22;).trim().required().is(/^[0-9]+$/),
+ field(&#x22;email&#x22;).trim().<span class="apidocCodeKeywordSpan">isEmail</span>()
+),
+
+// Express request-handler now receives filtered and validated data
+function(req, res){
+  if (!req.form.isValid) {
+    // Handle errors
+    console.log(req.form.errors);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isFloat" id="apidoc.element.express-form.field.prototype.isFloat">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isFloat
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isFloat = function (message) {
+  return this.add(function (value) {
+    if ((object.isNumber(value) &#x26;&#x26; value % 1 == 0) || (object.isString(value) &#x26;&#x26; value.match(/^[-+]?[0-9]*\.[0-9]+$/))) {
+    } else {
+      return { error: message || &#x22;%s is not a decimal&#x22; };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isHexColor" id="apidoc.element.express-form.field.prototype.isHexColor">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isHexColor
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isHexColor = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isHexadecimal" id="apidoc.element.express-form.field.prototype.isHexadecimal">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isHexadecimal
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isHexadecimal = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isIP" id="apidoc.element.express-form.field.prototype.isIP">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isIP
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isIP = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isIPv4" id="apidoc.element.express-form.field.prototype.isIPv4">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isIPv4
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isIPv4 = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isIPv6" id="apidoc.element.express-form.field.prototype.isIPv6">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isIPv6
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isIPv6 = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isIn" id="apidoc.element.express-form.field.prototype.isIn">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isIn
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isIn = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isInt" id="apidoc.element.express-form.field.prototype.isInt">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isInt
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isInt = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+field(fieldname[, label]);
+```
+
+You can access nested properties with either dot or square-bracket notation.
+
+```js
+field(&#x22;post.content&#x22;).minLength(50),
+field(&#x22;post[user][id]&#x22;).<span class="apidocCodeKeywordSpan">isInt</span>(),
+field(&#x22;post.super.nested.property&#x22;).required()
+```
+
+Simply specifying a property like this, makes sure it exists. So, even if `req.body.post` was undefined,
+`req.form.post.content` would be defined. This helps avoid any unwanted errors in your code.
+
+The API is chainable, so you can keep calling filter/validator methods one after the other:
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isLowercase" id="apidoc.element.express-form.field.prototype.isLowercase">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isLowercase
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isLowercase = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isNumeric" id="apidoc.element.express-form.field.prototype.isNumeric">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isNumeric
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isNumeric = function (message) {
+  return this.add(function (value) {
+    if (object.isNumber(value) || (object.isString(value) &#x26;&#x26; value.match(/^[-+]?[0-9]*\.?[0-9]+$/))) {
+    } else {
+      return { error: message || &#x22;%s is not a number&#x22; };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isString" id="apidoc.element.express-form.field.prototype.isString">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isString
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isString = function (message) {
+  return this.add(function (value) {
+    if (!object.isString(value)) {
+      return { error: message || &#x22;%s is not a string&#x22; };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var self = this
+  , errors = []
+  , value = utils.getProp(property, form) || utils.getProp(property, source);
+
+if (options.autoTrim &#x26;&#x26; !self.__trimmed) {
+  self.__trimmed = true;
+  stack.unshift(function (value) {
+    if (object.<span class="apidocCodeKeywordSpan">isString</span>(value)) {
+      return FilterPrototype.trim.apply(externalFilter.sanitize(value));
+    }
+    return value;
+  });
+}
+
+function runStack(foo, cb) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isUUID" id="apidoc.element.express-form.field.prototype.isUUID">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isUUID
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isUUID = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isUUIDv3" id="apidoc.element.express-form.field.prototype.isUUIDv3">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isUUIDv3
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isUUIDv3 = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isUUIDv4" id="apidoc.element.express-form.field.prototype.isUUIDv4">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isUUIDv4
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isUUIDv4 = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isUUIDv5" id="apidoc.element.express-form.field.prototype.isUUIDv5">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isUUIDv5
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isUUIDv5 = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isUppercase" id="apidoc.element.express-form.field.prototype.isUppercase">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isUppercase
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isUppercase = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.isUrl" id="apidoc.element.express-form.field.prototype.isUrl">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>isUrl
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isUrl = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.ltrim" id="apidoc.element.express-form.field.prototype.ltrim">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>ltrim
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ltrim = function () {
+  var args = arguments;
+  return this.add(function (value) {
+    var a = FilterPrototype[name].apply(externalFilter.sanitize(value), args);
+    return a;
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.max" id="apidoc.element.express-form.field.prototype.max">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>max
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">max = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.maxLength" id="apidoc.element.express-form.field.prototype.maxLength">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>maxLength
+        <span class="apidocSignatureSpan">(length, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">maxLength = function (length, message) {
+  return this.add(function(value) {
+    if (value.toString().length &#x3e; length) {
+      return { error: message || &#x22;%s is too long&#x22; };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.min" id="apidoc.element.express-form.field.prototype.min">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>min
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">min = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.minLength" id="apidoc.element.express-form.field.prototype.minLength">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>minLength
+        <span class="apidocSignatureSpan">(length, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">minLength = function (length, message) {
+  return this.add(function(value) {
+    if (value.toString().length &#x3c; length) {
+      return { error: message || &#x22;%s is too short&#x22; };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+field(fieldname[, label]);
+```
+
+You can access nested properties with either dot or square-bracket notation.
+
+```js
+field(&#x22;post.content&#x22;).<span class="apidocCodeKeywordSpan">minLength</span>(50),
+field(&#x22;post[user][id]&#x22;).isInt(),
+field(&#x22;post.super.nested.property&#x22;).required()
+```
+
+Simply specifying a property like this, makes sure it exists. So, even if `req.body.post` was undefined,
+`req.form.post.content` would be defined. This helps avoid any unwanted errors in your code.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.modify" id="apidoc.element.express-form.field.prototype.modify">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>modify
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">modify = function () {
+  var args = arguments;
+  return this.add(function (value) {
+    var a = FilterPrototype[name].apply(externalFilter.sanitize(value), args);
+    return a;
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.not" id="apidoc.element.express-form.field.prototype.not">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>not
+        <span class="apidocSignatureSpan">(pattern, modifiers, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">not = function (pattern, modifiers, message) {
+  // notRegex(/pattern/)
+  // notRegex(/pattern/, &#x22;message&#x22;)
+  // notRegex(&#x22;pattern&#x22;)
+  // notRegex(&#x22;pattern&#x22;, &#x22;modifiers&#x22;)
+  // notRegex(&#x22;pattern&#x22;, &#x22;message&#x22;)
+  // notRegex(&#x22;pattern&#x22;, &#x22;modifiers&#x22;, &#x22;message&#x22;)
+
+  if (pattern instanceof RegExp) {
+    if (object.isString(modifiers) &#x26;&#x26; modifiers.match(/^[gimy]+$/)) {
+      throw new Error(&#x22;Invalid arguments: `modifiers` can only be passed in if `pattern` is a string.&#x22;);
+    }
+
+    message = modifiers;
+    modifiers = undefined;
+
+  } else if (object.isString(pattern)) {
+    if (arguments.length == 2 &#x26;&#x26; !modifiers.match(/^[gimy]+$/)) {
+      // 2nd arg doesn&#x27;t look like modifier flags, it&#x27;s the message (might also be undefined)
+      message = modifiers;
+      modifiers = undefined;
+    }
+    pattern = new RegExp(pattern, modifiers);
+  }
+
+  return this.add(function(value) {
+    if (pattern.test(value) === true) {
+      return { error: message || &#x22;%s has invalid characters&#x22; };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+    alias: not
+
+    Checks that the value does NOT match the given regular expression.
+
+    Example:
+
+    validate(&#x22;username&#x22;).<span class="apidocCodeKeywordSpan">not</span>(&#x22;[a-z]&#x22;, &#x22;i&#x22;, &#x22;Letters
+ are not valid in %s&#x22;)
+    validate(&#x22;username&#x22;).not(/[a-z]/i, &#x22;Letters are not valid in %s&#x22;)
+
+
+*By Type*
+
+isNumeric([message])
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.notContains" id="apidoc.element.express-form.field.prototype.notContains">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>notContains
+        <span class="apidocSignatureSpan">(test, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">notContains = function (test, message) {
+  return this.add(function (value) {
+    try {
+      ValidatorPrototype.notContains.call(externalValidator.check(value, message), test);
+    } catch (e) {
+      return { error: message || &#x22;%s contains invalid characters&#x22; };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.notEmpty" id="apidoc.element.express-form.field.prototype.notEmpty">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>notEmpty
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">notEmpty = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.notIn" id="apidoc.element.express-form.field.prototype.notIn">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>notIn
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">notIn = function (message) {
+  var args = arguments;
+  message = message || MESSAGES[name];
+
+  return this.add(function(value) {
+    try {
+      ValidatorPrototype[name].apply(externalValidator.check(value, message), args);
+    } catch (e) {
+      return { error: e.message || e.toString() };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.notRegex" id="apidoc.element.express-form.field.prototype.notRegex">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>notRegex
+        <span class="apidocSignatureSpan">(pattern, modifiers, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">notRegex = function (pattern, modifiers, message) {
+  // notRegex(/pattern/)
+  // notRegex(/pattern/, &#x22;message&#x22;)
+  // notRegex(&#x22;pattern&#x22;)
+  // notRegex(&#x22;pattern&#x22;, &#x22;modifiers&#x22;)
+  // notRegex(&#x22;pattern&#x22;, &#x22;message&#x22;)
+  // notRegex(&#x22;pattern&#x22;, &#x22;modifiers&#x22;, &#x22;message&#x22;)
+
+  if (pattern instanceof RegExp) {
+    if (object.isString(modifiers) &#x26;&#x26; modifiers.match(/^[gimy]+$/)) {
+      throw new Error(&#x22;Invalid arguments: `modifiers` can only be passed in if `pattern` is a string.&#x22;);
+    }
+
+    message = modifiers;
+    modifiers = undefined;
+
+  } else if (object.isString(pattern)) {
+    if (arguments.length == 2 &#x26;&#x26; !modifiers.match(/^[gimy]+$/)) {
+      // 2nd arg doesn&#x27;t look like modifier flags, it&#x27;s the message (might also be undefined)
+      message = modifiers;
+      modifiers = undefined;
+    }
+    pattern = new RegExp(pattern, modifiers);
+  }
+
+  return this.add(function(value) {
+    if (pattern.test(value) === true) {
+      return { error: message || &#x22;%s has invalid characters&#x22; };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.regex" id="apidoc.element.express-form.field.prototype.regex">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>regex
+        <span class="apidocSignatureSpan">(pattern, modifiers, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">regex = function (pattern, modifiers, message) {
+  // regex(/pattern/)
+  // regex(/pattern/, &#x22;message&#x22;)
+  // regex(&#x22;pattern&#x22;)
+  // regex(&#x22;pattern&#x22;, &#x22;modifiers&#x22;)
+  // regex(&#x22;pattern&#x22;, &#x22;message&#x22;)
+  // regex(&#x22;pattern&#x22;, &#x22;modifiers&#x22;, &#x22;message&#x22;)
+
+  if (pattern instanceof RegExp) {
+    if (object.isString(modifiers) &#x26;&#x26; modifiers.match(/^[gimy]+$/)) {
+      throw new Error(&#x22;Invalid arguments: `modifiers` can only be passed in if `pattern` is a string.&#x22;);
+    }
+
+    message = modifiers;
+    modifiers = undefined;
+
+  } else if (object.isString(pattern)) {
+    if (arguments.length == 2 &#x26;&#x26; !modifiers.match(/^[gimy]+$/)) {
+      // 2nd arg doesn&#x27;t look like modifier flags, it&#x27;s the message (might also be undefined)
+      message = modifiers;
+      modifiers = undefined;
+    }
+    pattern = new RegExp(pattern, modifiers);
+  }
+
+  return this.add(function (value) {
+    if (pattern.test(value) === false) {
+      return { error: message || &#x22;%s has invalid characters&#x22; };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.required" id="apidoc.element.express-form.field.prototype.required">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>required
+        <span class="apidocSignatureSpan">(placeholderValue, message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">required = function (placeholderValue, message) {
+  this.__required = true;
+  return this.add(function (value) {
+    if (!utils.hasValue(value) || value == placeholderValue) {
+      return { error: message || &#x22;%s is required&#x22; };
+    }
+    return { valid: true };
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+app.post(
+
+  // Route
+  &#x27;/user&#x27;,
+
+  // Form filter and validation middleware
+  form(
+ field(&#x22;username&#x22;).trim().<span class="apidocCodeKeywordSpan">required</span>().is(/^[a-z]+$/),
+ field(&#x22;password&#x22;).trim().required().is(/^[0-9]+$/),
+ field(&#x22;email&#x22;).trim().isEmail()
+),
+
+// Express request-handler now receives filtered and validated data
+function(req, res){
+  if (!req.form.isValid) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.rtrim" id="apidoc.element.express-form.field.prototype.rtrim">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>rtrim
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">rtrim = function () {
+  var args = arguments;
+  return this.add(function (value) {
+    var a = FilterPrototype[name].apply(externalFilter.sanitize(value), args);
+    return a;
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.sanitize" id="apidoc.element.express-form.field.prototype.sanitize">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>sanitize
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">sanitize = function () {
+  var args = arguments;
+  return this.add(function (value) {
+    var a = FilterPrototype[name].apply(externalFilter.sanitize(value), args);
+    return a;
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  , errors = []
+  , value = utils.getProp(property, form) || utils.getProp(property, source);
+
+if (options.autoTrim &#x26;&#x26; !self.__trimmed) {
+  self.__trimmed = true;
+  stack.unshift(function (value) {
+    if (object.isString(value)) {
+      return FilterPrototype.trim.apply(externalFilter.<span class="apidocCodeKeywordSpan">sanitize</span>(value));
+    }
+    return value;
+  });
+}
+
+function runStack(foo, cb) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.toBoolean" id="apidoc.element.express-form.field.prototype.toBoolean">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>toBoolean
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toBoolean = function () {
+  var args = arguments;
+  return this.add(function (value) {
+    var a = FilterPrototype[name].apply(externalFilter.sanitize(value), args);
+    return a;
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.toBooleanStrict" id="apidoc.element.express-form.field.prototype.toBooleanStrict">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>toBooleanStrict
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toBooleanStrict = function () {
+  var args = arguments;
+  return this.add(function (value) {
+    var a = FilterPrototype[name].apply(externalFilter.sanitize(value), args);
+    return a;
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.toFloat" id="apidoc.element.express-form.field.prototype.toFloat">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>toFloat
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toFloat = function () {
+  var args = arguments;
+  return this.add(function (value) {
+    var a = FilterPrototype[name].apply(externalFilter.sanitize(value), args);
+    return a;
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.toInt" id="apidoc.element.express-form.field.prototype.toInt">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>toInt
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toInt = function () {
+  var args = arguments;
+  return this.add(function (value) {
+    var a = FilterPrototype[name].apply(externalFilter.sanitize(value), args);
+    return a;
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.toLower" id="apidoc.element.express-form.field.prototype.toLower">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>toLower
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toLower = function () {
+  return this.add(function (value) {
+    return value.toString().toLowerCase();
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+The API is chainable, so you can keep calling filter/validator methods one after the other:
+
+```js
+filter(&#x22;username&#x22;)
+  .required()
+  .trim()
+  .<span class="apidocCodeKeywordSpan">toLower</span>()
+  .truncate(5)
+  .isAlphanumeric()
+```
+
+### Filter API:
+
+Type Coercion
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.toLowerCase" id="apidoc.element.express-form.field.prototype.toLowerCase">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>toLowerCase
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toLowerCase = function () {
+  return this.add(function (value) {
+    return value.toString().toLowerCase();
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+return this.add(function (value) {
+  return value.toString().toUpperCase();
+});
+};
+
+Field.prototype.toLower = Field.prototype.toLowerCase = function () {
+return this.add(function (value) {
+  return value.toString().<span class="apidocCodeKeywordSpan">toLowerCase</span>();
+});
+};
+
+Field.prototype.truncate = function (length) {
+return this.add(function (value) {
+  value = value.toString();
+  if (value.length &#x3c;= length) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.toUpper" id="apidoc.element.express-form.field.prototype.toUpper">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>toUpper
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toUpper = function () {
+  return this.add(function (value) {
+    return value.toString().toUpperCase();
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    // undefined =&#x3e; [], &#x22;&#x22; =&#x3e; [], &#x22;q&#x22; =&#x3e; [&#x22;q&#x22;], [&#x22;a&#x22;, &#x22;b&#x22;] =&#x3e
+; [&#x22;a&#x22;, &#x22;b&#x22;]
+
+    field(&#x22;project.block&#x22;),
+    // project.block: [&#x22;a&#x22;, &#x22;b&#x22;] =&#x3e; &#x22;a&#x22;. No &#x22;array()&#x22;, so only first value used.
+
+    In addition, any other methods called with the array method, are applied to every value within the array.
+
+    field(&#x22;post.users&#x22;).array().<span class="apidocCodeKeywordSpan">toUpper</span>()
+    // post.users: [&#x22;one&#x22;, &#x22;two&#x22;, &#x22;three&#x22;] =&#x3e; [&#x22;ONE&#x22;, &#x22;TWO&#x22;, &#x22;THREE&#
+x22;]
+
+### Custom Methods
+
+custom(function[, message])
+- function (Function): A custom filter or validation function.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.toUpperCase" id="apidoc.element.express-form.field.prototype.toUpperCase">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>toUpperCase
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toUpperCase = function () {
+  return this.add(function (value) {
+    return value.toString().toUpperCase();
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  }
+  return value;
+});
+};
+
+Field.prototype.toUpper = Field.prototype.toUpperCase = function () {
+return this.add(function (value) {
+  return value.toString().<span class="apidocCodeKeywordSpan">toUpperCase</span>();
+});
+};
+
+Field.prototype.toLower = Field.prototype.toLowerCase = function () {
+return this.add(function (value) {
+  return value.toString().toLowerCase();
+});
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.trim" id="apidoc.element.express-form.field.prototype.trim">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>trim
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">trim = function () {
+  var args = arguments;
+  return this.add(function (value) {
+    var a = FilterPrototype[name].apply(externalFilter.sanitize(value), args);
+    return a;
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+app.post(
+
+  // Route
+  &#x27;/user&#x27;,
+
+  // Form filter and validation middleware
+  form(
+ field(&#x22;username&#x22;).<span class="apidocCodeKeywordSpan">trim</span>().required().is(/^[a-z]+$/),
+ field(&#x22;password&#x22;).trim().required().is(/^[0-9]+$/),
+ field(&#x22;email&#x22;).trim().isEmail()
+),
+
+// Express request-handler now receives filtered and validated data
+function(req, res){
+  if (!req.form.isValid) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.truncate" id="apidoc.element.express-form.field.prototype.truncate">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>truncate
+        <span class="apidocSignatureSpan">(length)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">truncate = function (length) {
+  return this.add(function (value) {
+    value = value.toString();
+    if (value.length &#x3c;= length) {
+      return value;
+    }
+
+    if (length &#x3c;= 3) return &#x22;...&#x22;;
+
+    if (value.length &#x3e; length - 3) {
+      return value.substr(0,length - 3) + &#x22;...&#x22;;
+    }
+
+    return value;
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+The API is chainable, so you can keep calling filter/validator methods one after the other:
+
+```js
+filter(&#x22;username&#x22;)
+  .required()
+  .trim()
+  .toLower()
+  .<span class="apidocCodeKeywordSpan">truncate</span>(5)
+  .isAlphanumeric()
+```
+
+### Filter API:
+
+Type Coercion
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.value" id="apidoc.element.express-form.field.prototype.value">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>value
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">value = function () {
+  var args = arguments;
+  return this.add(function (value) {
+    var a = FilterPrototype[name].apply(externalFilter.sanitize(value), args);
+    return a;
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.field.prototype.wrap" id="apidoc.element.express-form.field.prototype.wrap">
+        function <span class="apidocSignatureSpan">express-form.field.prototype.</span>wrap
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">wrap = function () {
+  var args = arguments;
+  return this.add(function (value) {
+    var a = FilterPrototype[name].apply(externalFilter.sanitize(value), args);
+    return a;
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.express-form.form" id="apidoc.module.express-form.form">module express-form.form</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.form.form" id="apidoc.element.express-form.form.form">
+        function <span class="apidocSignatureSpan">express-form.</span>form
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function form() {
+  var routines = Array.prototype.slice.call(arguments)
+    , options = form._options;
+
+  return function (req, res, next) {
+    var map = {}
+      , flashed = {}
+      , mergedSource = {};
+
+    if (!req.form) req.form = {};
+
+    options.dataSources.forEach(function (source) {
+      utils.merge(mergedSource, req[source]);
+    });
+
+    if (options.passThrough) req.form = utils.clone(mergedSource);
+
+    if (options.autoLocals) {
+      for (var prop in req.body) {
+        if (!Object.hasOwnProperty.call(req.body, prop)) continue;
+
+<span class="apidocCodeCommentSpan">        /*
+         * express 1.x and 3.x
+         * ------------------------
+         * res.locals.field = value
+         *
+         * express 2.x
+         * ------------------------
+         * res.local(field, value)
+         * res.locals({field: value});
+         */
+</span>        if (typeof res.local === &#x22;function&#x22;) {
+          // express 2.x
+          res.local(utils.camelize(prop), req.body[prop]);
+        } else {
+          // express 1.x and 3.x
+          if (!res.locals) res.locals = {};
+          res.locals[utils.camelize(prop)] = req.body[prop];
+        }
+      }
+    }
+
+    Object.defineProperties(req.form, {
+      &#x22;errors&#x22;: {
+        value: [],
+        enumerable: false
+      },
+      &#x22;getErrors&#x22;: {
+        value: function (name) {
+          if(!name) return map;
+
+          return map[name] || [];
+        },
+        enumerable: false
+      },
+      &#x22;isValid&#x22;: {
+        get: function () {
+          return this.errors.length === 0;
+        },
+        enumerable: false
+      },
+      &#x22;flashErrors&#x22;: {
+        value: function () {
+          if (typeof req.flash !== &#x22;function&#x22;) return;
+          this.errors.forEach(function (error) {
+            if (flashed[error]) return;
+
+            flashed[error] = true;
+            req.flash(&#x22;error&#x22;, error);
+          });
+        },
+        enumerable: false
+      }
+    });
+
+    //routines.forEach(function (routine) {
+    async.each(routines, function(routine, cb) {
+      routine.run(mergedSource, req.form, options, function(err, result) {
+
+        // return early if no errors
+        if (!Array.isArray(result) || !result.length) return cb(null);
+
+        var errors = req.form.errors = req.form.errors || []
+          , name = routine.name;
+
+        map[name] = map[name] || [];
+
+        result.forEach(function (error) {
+          errors.push(error);
+          map[name].push(error);
+        });
+
+        cb(null);
+
+      });
+    }, function(err) {
+
+      if (options.flashErrors) req.form.flashErrors();
+      if (next) next();
+
+    });
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.form.configure" id="apidoc.element.express-form.form.configure">
+        function <span class="apidocSignatureSpan">express-form.form.</span>configure
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">configure = function (options) {
+  for (var p in options) {
+    if (!Array.isArray(options[p]) &#x26;&#x26; p === &#x22;dataSources&#x22;) {
+      options[p] = [options[p]];
+    }
+    this._options[p] = options[p];
+  }
+  return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  }
+}
+
+### Configuration
+
+Express Form has various configuration options, but aims for sensible defaults for a typical Express application.
+
+form.<span class="apidocCodeKeywordSpan">configure</span>(options) -&#x3e; self
+- options (Object): An object with configuration options.
+
+flashErrors (Boolean): If validation errors should be automatically passed to Express’ flash() method. Default: true.
+
+autoLocals (Boolean): If field values from Express’ request.body should be passed into Express’ response.locals object. This is
+helpful when a form is invalid an you want to repopulate the form elements with their submitted values. Default: true.
+
+Note: if a field name dash-separated, the name used for the locals object will be in camelCase.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.form.field" id="apidoc.element.express-form.form.field">
+        function <span class="apidocSignatureSpan">express-form.form.</span>field
+        <span class="apidocSignatureSpan">(property, label)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">field = function (property, label) {
+  return new Field(property, label);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```js
+var form = require(&#x22;express-form&#x22;);
+
+app.post(&#x27;/user&#x27;,
+
+  // Express Form Route Middleware: trims whitespace off of
+  // the `username` field.
+  form(form.<span class="apidocCodeKeywordSpan">field</span>(&#x22;username&#x22;).trim()),
+
+  // standard Express handler
+  function(req, res) {
+    // ...
+  }
+);
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.form.filter" id="apidoc.element.express-form.form.filter">
+        function <span class="apidocSignatureSpan">express-form.form.</span>filter
+        <span class="apidocSignatureSpan">(property, label)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">filter = function (property, label) {
+  return new Field(property, label);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.form.validate" id="apidoc.element.express-form.form.validate">
+        function <span class="apidocSignatureSpan">express-form.form.</span>validate
+        <span class="apidocSignatureSpan">(property, label)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">validate = function (property, label) {
+  return new Field(property, label);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.express-form.utils" id="apidoc.module.express-form.utils">module express-form.utils</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.utils.camelize" id="apidoc.element.express-form.utils.camelize">
+        function <span class="apidocSignatureSpan">express-form.utils.</span>camelize
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">camelize = function (str) {
+  return (str || &#x22;&#x22;).replace(/-+(.)?/g, function(match, chr) {
+    return chr ? chr.toUpperCase() : &#x27;&#x27;;
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.utils.clone" id="apidoc.element.express-form.utils.clone">
+        function <span class="apidocSignatureSpan">express-form.utils.</span>clone
+        <span class="apidocSignatureSpan">(obj)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">clone = function (obj) {
+  // Untested, probably better:-&#x3e; return Object.create(obj).__proto__;
+  return JSON.parse(JSON.stringify(obj));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.utils.getProp" id="apidoc.element.express-form.utils.getProp">
+        function <span class="apidocSignatureSpan">express-form.utils.</span>getProp
+        <span class="apidocSignatureSpan">(property, obj)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getProp = function (property, obj) {
+  var levels = toDotNotation(property).split(&#x22;.&#x22;);
+
+  while (obj != null &#x26;&#x26; levels[0]) {
+    obj = obj[levels.shift()];
+    if (obj == null) obj = &#x22;&#x22;;
+  }
+
+  return obj;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+isArray = true;
+return this;
+  };
+
+  this.run = function (source, form, options, cb) {
+var self = this
+  , errors = []
+  , value = utils.<span class="apidocCodeKeywordSpan">getProp</span>(property, form) || utils.getProp(property, source);
+
+if (options.autoTrim &#x26;&#x26; !self.__trimmed) {
+  self.__trimmed = true;
+  stack.unshift(function (value) {
+    if (object.isString(value)) {
+      return FilterPrototype.trim.apply(externalFilter.sanitize(value));
+    }
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.utils.hasValue" id="apidoc.element.express-form.utils.hasValue">
+        function <span class="apidocSignatureSpan">express-form.utils.</span>hasValue
+        <span class="apidocSignatureSpan">(value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hasValue = function (value) {
+  return !(undefined === value || null === value || &#x22;&#x22; === value);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+// run the sync validator/filter
+var result = proc(foo, source);
+if (result.valid) return cb(null);
+if (result.error) {
+  // If this field is not required and it doesn&#x27;t have a value, ignore error.
+  if (!utils.<span class="apidocCodeKeywordSpan">hasValue</span>(value) &#x26;&#x26; !self.__required) return cb(null);
+
+  errors.push(result.error.replace(&#x22;%s&#x22;, fieldLabel));
+  return cb(null);
+}
+foo = result;
+cb(null);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.utils.merge" id="apidoc.element.express-form.utils.merge">
+        function <span class="apidocSignatureSpan">express-form.utils.</span>merge
+        <span class="apidocSignatureSpan">(obj1, obj2)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">merge = function (obj1, obj2) {
+  for (var p in obj2) {
+    try {
+      // Property in destination object set; update its value.
+      if ( obj2[p].constructor==Object ) {
+        obj1[p] = merge(obj1[p], obj2[p]);
+      } else {
+        obj1[p] = obj2[p];
+      }
+    } catch (e) {
+      // Property in destination object not set; create it and set its value.
+      obj1[p] = obj2[p];
+    }
+  }
+  return obj1;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.utils.setProp" id="apidoc.element.express-form.utils.setProp">
+        function <span class="apidocSignatureSpan">express-form.utils.</span>setProp
+        <span class="apidocSignatureSpan">(property, obj, value)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setProp = function (property, obj, value) {
+  var levels = toDotNotation(property).split(&#x22;.&#x22;);
+
+  while (levels[0]) {
+    var p = levels.shift();
+    if (typeof obj[p] !== &#x22;object&#x22;) obj[p] = {};
+    if (!levels.length) obj[p] = value;
+    obj = obj[p];
+  }
+
+  return obj;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  });
+}
+
+if (isArray) {
+  if (!utils.hasValue(value)) value = [];
+  if (!Array.isArray(value)) value = [value];
+  async.mapSeries(value, runStack, function(err, value) {
+    utils.<span class="apidocCodeKeywordSpan">setProp</span>(property, form, value);
+    cb(null, errors);
+  });
+
+
+} else {
+  if (Array.isArray(value)) value = value[0];
+  runStack(value, function(err, value) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.express-form.utils.toDotNotation" id="apidoc.element.express-form.utils.toDotNotation">
+        function <span class="apidocSignatureSpan">express-form.utils.</span>toDotNotation
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toDotNotation = function (str) {
+  return str.replace(/\[((.)*?)\]/g, &#x22;.$1&#x22;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
